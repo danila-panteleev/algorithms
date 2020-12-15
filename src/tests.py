@@ -24,5 +24,9 @@ def test_bubble_sort():
     test_fabric(alg.bubble_sort)
 
 
+def test_insert_sort():
+    test_fabric(alg.insert_sort)
+
+
 if __name__ == '__main__':
-    test_bubble_sort()
+    test_insert_sort()
