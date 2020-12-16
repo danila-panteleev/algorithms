@@ -36,12 +36,12 @@ def selection_sort(data):
     data = list(data)
     result = []
     while data:
-        min = data[0]
+        min_value = data[0]
         min_index = 0
         for i in range(len(data)):
-            if data[i] < min:
-                min = data[i]
+            if data[i] < min_value:
+                min_value = data[i]
                 min_index = i
-        result.append(min)
+        result.append(min_value)
         data.pop(min_index)
     return result
