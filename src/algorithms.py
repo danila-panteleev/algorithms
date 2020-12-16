@@ -30,3 +30,18 @@ def insert_sort(data):
                 result.append(data[0])
         data.pop(0)
     return result
+
+
+def selection_sort(data):
+    data = list(data)
+    result = []
+    while data:
+        min = data[0]
+        min_index = 0
+        for i in range(len(data)):
+            if data[i] < min:
+                min = data[i]
+                min_index = i
+        result.append(min)
+        data.pop(min_index)
+    return result
