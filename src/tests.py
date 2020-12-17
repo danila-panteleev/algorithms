@@ -32,7 +32,12 @@ def test_selection_sort():
     test_fabric(alg.selection_sort)
 
 
+def test_merge_sort():
+    test_fabric(alg.merge_sort)
+
+
 if __name__ == '__main__':
     test_bubble_sort()
     test_insert_sort()
     test_selection_sort()
+    test_merge_sort()

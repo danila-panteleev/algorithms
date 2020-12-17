@@ -1,3 +1,4 @@
+import math
 
 
 def swap(data, left_index, right_index):
@@ -45,3 +46,29 @@ def selection_sort(data):
         result.append(min_value)
         data.pop(min_index)
     return result
+
+
+def merge_sort(data):
+    data = list(data)
+
+    if len(data) == 2 and data[0] > data[1]:
+        data[0], data[1] = data[1], data[0]
+
+    elif len(data) > 2:
+        left = merge_sort(data[:(len(data) // 2)])
+        right = merge_sort(data[len(data) // 2:])
+        data = []
+
+        while left:
+            if right:
+                if left[0] <= right[0]:
+                    data.append(left[0])
+                    left.pop(0)
+                else:
+                    data.append(right[0])
+                    right.pop(0)
+
+        for i in right:
+            data.append(i)
+
+    return data
