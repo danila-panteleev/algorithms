@@ -1,6 +1,6 @@
 import algorithms as alg
 from collections import OrderedDict
-
+import random
 
 TEST_CASE = OrderedDict({
     (1, 2, 3, 4, 5, 6, 7): [1, 2, 3, 4, 5, 6, 7],
@@ -11,11 +11,27 @@ TEST_CASE = OrderedDict({
     (6, 88, 3423, -2): [-2, 6, 88, 3423],
     (6, 3423, 88, -2): [-2, 6, 88, 3423],
     (-2, 3423, 88, 6): [-2, 6, 88, 3423],
-
 })
 
 
-def test_fabric(sort_func):
+def test_fabric(sort_func, random_test_quantity=100):
+
+    if random_test_quantity:
+        random_test_size = random.choice(range(1, 100))
+        random_test_case = OrderedDict()
+        for n in range(random_test_quantity):
+            case = [random.choice([i for i in range(-1000, 1000)]) for i in range(random_test_size)]
+            random_test_case.update({tuple(case): sorted(case)})
+
+    for case in random_test_case.keys():
+        result = sort_func(case)
+        try:
+            assert result == TEST_CASE[case]
+        except AssertionError:
+            print(f'{case} {sort_func.__name__} failed\nresult {result}')
+        finally:
+            continue
+
     for case in TEST_CASE.keys():
         result = sort_func(case)
         try:
