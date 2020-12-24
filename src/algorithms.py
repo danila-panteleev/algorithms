@@ -60,13 +60,10 @@ def merge_sort(data):
         data = []
 
         while left:
-            if right:
-                if left[0] <= right[0]:
-                    data.append(left[0])
-                    left.pop(0)
-                else:
-                    data.append(right[0])
-                    right.pop(0)
+            if right and left[0] < right[0] or not right:
+                data.append(left.pop(0))
+            else:
+                data.append(right.pop(0))
 
         for i in right:
             data.append(i)
@@ -75,18 +72,6 @@ def merge_sort(data):
 
 
 def quick_sort(data):
-    """
-    mid := (low + high) / 2
-        if A[mid] < A[low]
-            swap A[low] with A[mid]
-        if A[high] < A[low]
-            swap A[low] with A[high]
-        if A[mid] < A[high]
-            swap A[high] with A[mid]
-    pivot := A[high]
-    :param data:
-    :return:
-    """
     def partition(partition_data):
         pivot_index = len(partition_data) - 1
         pivot_value = partition_data[pivot_index]
@@ -98,16 +83,15 @@ def quick_sort(data):
                 pivot_index -= 1
                 continue
             i += 1
-        return partition_data, pivot_index
-
+        return {'partition_data': partition_data, 'pivot_index': pivot_index}
     data = list(data)
 
     if len(data) < 2:
         return data
 
     packed_data = partition(data)
-    data = packed_data[0]
-    pivot_index = packed_data[1]
+    data = packed_data['partition_data']
+    pivot_index = packed_data['pivot_index']
 
     left = quick_sort(data[:pivot_index])
     right = quick_sort(data[pivot_index:])
