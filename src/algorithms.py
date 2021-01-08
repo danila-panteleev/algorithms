@@ -1,5 +1,3 @@
-import math
-
 
 def swap(data, left_index, right_index):
     data[left_index], data[right_index] = data[right_index], data[left_index]
