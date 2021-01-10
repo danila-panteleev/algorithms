@@ -11,4 +11,4 @@ Trying to understand algorithms by practicing with Python
 ### Features:
 - clear tests in TEST_CASE
 - randomized tests
-- the benchmark in randomized tests is the basic function sorted()
+- the benchmark in randomized tests is the function sorted() from standard library
